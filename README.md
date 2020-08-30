@@ -3,7 +3,7 @@
 
 This repository contains my solution for the IBM AI Enterprise Workflow Captstone project.
 The task was given in https://github.com/aavail/ai-workflow-capstone and is additionally
-documented here.
+documented [here](https://github.com/MBAigner/ai-workflow-capstone/blob/master/documentation/description.md).
 
 
 ## Part 1
