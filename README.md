@@ -5,14 +5,14 @@
 
 #### (1) Assimilate the business scenario and articulate testable hypotheses.
 
-* $H_0$: There will be no difference between the revenue of the new model an the old one.
-* $H_1$: The revenue will increase using the new model.
+* H<sub>0</sub>: There will be no difference between the revenue of the new model an the old one.
+* H<sub>1</sub>: The revenue will increase using the new model.
 
 Another alternative hypothesis is that the revenue goes down when using the new model.
 Alternatively, the same can be assumed country-wise:
 
-* A further hypothesis $H_0$ is that there are no differences in the distribution of monthly revenues of the then top countries,
- * vs. $H_1$ that there is significance in the difference.
+* A further hypothesis H<sub>0</sub> is that there are no differences in the distribution of monthly revenues of the then top countries,
+ * vs. H<sub>1</sub> that there is significance in the difference.
 
 #### (2) State the ideal data to address the business opportunity and clarify the rationale for needing specific data.
 
