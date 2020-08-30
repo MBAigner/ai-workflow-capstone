@@ -50,3 +50,22 @@ Summarize what you have learned in your investigations using visualizations.
 ## Part 2
 
 TBD
+
+
+1. State the different modeling approaches that you will compare to address the business opportunity.
+2. Iterate on your suite of possible models by modifying data transformations, pipeline architectures, hyperparameters and other relevant factors.
+3. Re-train your model on all of the data using the selected approach and prepare it for deployment.
+4. Articulate your findings in a summary report.
+
+
+## Part 3
+
+TBD
+
+1. Build a draft version of an API with train, predict, and logfile endpoints.
+2. Using Docker, bundle your API, model, and unit tests.
+3. Using test-driven development iterate on your API in a way that anticipates scale, load, and drift.
+4. Create a post-production analysis script that investigates the relationship between model performance and the business metric.
+5. Articulate your summarized findings in a final report.
+
+
