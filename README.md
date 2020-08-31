@@ -17,7 +17,7 @@ Another alternative hypothesis is that the revenue goes down when using the new 
 Alternatively, the same can be assumed country-wise:
 
 * A further hypothesis H<sub>0</sub> is that there are no differences in the distribution of monthly revenues of the then top countries,
- * vs. H<sub>1</sub> that there is significance in the difference.
+ * vs. H<sub>1</sub> that there is s significant difference.
 
 #### (2) State the ideal data to address the business opportunity and clarify the rationale for needing specific data.
 
@@ -31,21 +31,21 @@ Ideal data to address the business opportunity includes for each transaction:
 
 #### (3) Create a python script to extract relevant data from multiple data sources, automating the process of data ingestion.
 
-TBD
-
-From within a Python module there should be a function that reads in the data, attempts to catch common input errors and returns a feature matrix (NumPy array or Pandas DataFrame) that will subsequently be used as a starting point for EDA and modeling.
+The extraction of the relevant data from multiple input files is based on the script given in the solution guidance
+ ``solution-guidance/cslib.py``.
+ 
+The extracted Pandas DataFrames have been used as a basis for the subsequent EDA tasks (4) and (5).
 
 ####  (4) Investigate the relationship between the relevant data, the target and the business metric.
 
-TBD
-
-Using the feature matrix and the tools abvailable to you through EDA spend some time to get to know the data.
+The data exploration and the determination of relationships has been done in the Jupyter notebook
+ ``scripts/part_1.ipynb``.
 
 #### (5) Articulate your findings using a deliverable with visualizations.
 
-TBD
-
-Summarize what you have learned in your investigations using visualizations.
+The visualizations have been again built in the script  ``scripts/part_1.ipynb``.
+The findings are summarized in the part 1 report in the documentation folder 
+``documentation/part1_report.pdf``.
 
 ## Part 2
 
