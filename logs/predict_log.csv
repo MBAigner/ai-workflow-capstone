@@ -1,0 +1,2 @@
+country;y_pred;y_proba;target_date;runtime;version;source
+all;[181981.07506667];None;2018-01-05;000:00:29;0.1;prod

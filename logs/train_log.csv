@@ -1,0 +1,3 @@
+tag;dates;rmse;runtime;version;version_note;source
+united_kingdom;('2017-11-29', '2019-05-31');42848;000:00:06;0.1;supervised learing model for time-series;test
+all;('2017-11-30', '2019-05-20');36542;000:00:04;0.1;supervised learing model for time-series;test
