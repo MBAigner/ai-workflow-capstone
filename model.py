@@ -6,6 +6,7 @@ import pandas as pd
 from sklearn import svm
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.ensemble import RandomForestRegressor
+from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.metrics import mean_squared_error
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
 from sklearn.pipeline import Pipeline
@@ -17,25 +18,80 @@ from cslib import fetch_ts, engineer_features
 ## model specific variables (iterate the version and note with each change)
 MODEL_DIR = "models"
 MODEL_VERSION = 0.1
-MODEL_VERSION_NOTE = "supervised learing model for time-series"
+MODEL_VERSION_NOTE = "supervised learing model for time-series - Random Forest Regressor"
 
 TRAIN_PATH = os.path.join("data", "cs-train")
+countries = ['portugal',
+             'united_kingdom',
+             'hong_kong',
+             'eire',
+             'spain',
+             'france',
+             'singapore',
+             'all',
+             'norway',
+             'germany',
+             'netherlands']
 
 
-def _model_train(df,tag,test=False):
-    """
-    example funtion to train model
-    
-    The 'test' flag when set to 'True':
-        (1) subsets the data and serializes a test version
-        (2) specifies that the use of the 'test' log file 
-
-    """
-
-
-    ## start timer for runtime
+def _model_train_gbr(df, tag, test=False):
+    # start timer for runtime
     time_start = time.time()
-    
+
+    X, y, dates = engineer_features(df)
+
+    if test:
+        n_samples = int(np.round(0.3 * X.shape[0]))
+        subset_indices = np.random.choice(np.arange(X.shape[0]), n_samples,
+                                          replace=False).astype(int)
+        mask = np.in1d(np.arange(y.size), subset_indices)
+        y = y[mask]
+        X = X[mask]
+        dates = dates[mask]
+
+    ## Perform a train-test split
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25,
+                                                        shuffle=True, random_state=42)
+    ## train a svm
+    param_grid_svm = {
+        'gbr__n_estimators': [10, 15, 20, 25]
+    }
+
+    pipe_svm = Pipeline(steps=[('scaler', StandardScaler()),
+                               ('gbr', GradientBoostingRegressor())])
+
+    grid = GridSearchCV(pipe_svm, param_grid=param_grid_svm, cv=5, iid=False, n_jobs=-1)
+    grid.fit(X_train, y_train)
+    y_pred = grid.predict(X_test)
+    eval_rmse = round(np.sqrt(mean_squared_error(y_test, y_pred)))
+
+    # retrain using all data
+    grid.fit(X, y)
+    model_name = re.sub("\.", "_", str(MODEL_VERSION))
+    if test:
+        saved_model = os.path.join(MODEL_DIR,
+                                   "test-{}-{}.joblib".format(tag, model_name))
+        print("... saving test version of model: {}".format(saved_model))
+    else:
+        saved_model = os.path.join(MODEL_DIR,
+                                   "sl-{}-{}.joblib".format(tag, model_name))
+        print("... saving model: {}".format(saved_model))
+
+    joblib.dump(grid, saved_model)
+
+    m, s = divmod(time.time() - time_start, 60)
+    h, m = divmod(m, 60)
+    runtime = "%03d:%02d:%02d" % (h, m, s)
+
+    # update log
+    update_train_log(tag, (str(dates[0]), str(dates[-1])), {'rmse': eval_rmse}, runtime,
+                     MODEL_VERSION, MODEL_VERSION_NOTE, test=True)
+
+
+def _model_train_svm(df,tag,test=False):
+    # start timer for runtime
+    time_start = time.time()
+
     X,y,dates = engineer_features(df)
 
     if test:
@@ -46,24 +102,23 @@ def _model_train(df,tag,test=False):
         y = y[mask]
         X = X[mask]
         dates = dates[mask]
-        
+
     ## Perform a train-test split
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25,
                                                         shuffle=True, random_state=42)
-    ## train a random forest model
-    param_grid_rf = {
-    'rf__criterion': ['mse', 'mae'],
-    'rf__n_estimators': [10,15,20,25]
+    ## train a svm
+    param_grid_svm = {
+        'svr__kernel': ['rbf', 'linear', 'poly']
     }
 
-    pipe_rf = Pipeline(steps=[('scaler', StandardScaler()),
-                              ('rf', RandomForestRegressor())])
-    
-    grid = GridSearchCV(pipe_rf, param_grid=param_grid_rf, cv=5, iid=False, n_jobs=-1)
+    pipe_svm = Pipeline(steps=[('scaler', StandardScaler()),
+                              ('svr', svm.SVR())])
+
+    grid = GridSearchCV(pipe_svm, param_grid=param_grid_svm, cv=5, iid=False, n_jobs=-1)
     grid.fit(X_train, y_train)
     y_pred = grid.predict(X_test)
     eval_rmse = round(np.sqrt(mean_squared_error(y_test ,y_pred)))
-    
+
     # retrain using all data
     grid.fit(X, y)
     model_name = re.sub("\.", "_", str(MODEL_VERSION))
@@ -85,9 +140,73 @@ def _model_train(df,tag,test=False):
     # update log
     update_train_log(tag, (str(dates[0]), str(dates[-1])), {'rmse': eval_rmse}, runtime,
                      MODEL_VERSION, MODEL_VERSION_NOTE, test=True)
-  
 
-def model_train(data_dir,test=False):
+
+def _model_train_rf(df, tag, test=False):
+    """
+    example funtion to train model
+
+    The 'test' flag when set to 'True':
+        (1) subsets the data and serializes a test version
+        (2) specifies that the use of the 'test' log file
+
+    """
+
+    ## start timer for runtime
+    time_start = time.time()
+
+    X, y, dates = engineer_features(df)
+
+    if test:
+        n_samples = int(np.round(0.3 * X.shape[0]))
+        subset_indices = np.random.choice(np.arange(X.shape[0]), n_samples,
+                                          replace=False).astype(int)
+        mask = np.in1d(np.arange(y.size), subset_indices)
+        y = y[mask]
+        X = X[mask]
+        dates = dates[mask]
+
+    ## Perform a train-test split
+    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25,
+                                                        shuffle=True, random_state=42)
+    ## train a random forest model
+    param_grid_rf = {
+        'rf__criterion': ['mse', 'mae'],
+        'rf__n_estimators': [10, 15, 20, 25]
+    }
+
+    pipe_rf = Pipeline(steps=[('scaler', StandardScaler()),
+                              ('rf', RandomForestRegressor())])
+
+    grid = GridSearchCV(pipe_rf, param_grid=param_grid_rf, cv=5, iid=False, n_jobs=-1)
+    grid.fit(X_train, y_train)
+    y_pred = grid.predict(X_test)
+    eval_rmse = round(np.sqrt(mean_squared_error(y_test, y_pred)))
+
+    # retrain using all data
+    grid.fit(X, y)
+    model_name = re.sub("\.", "_", str(MODEL_VERSION))
+    if test:
+        saved_model = os.path.join(MODEL_DIR,
+                                   "test-{}-{}.joblib".format(tag, model_name))
+        print("... saving test version of model: {}".format(saved_model))
+    else:
+        saved_model = os.path.join(MODEL_DIR,
+                                   "sl-{}-{}.joblib".format(tag, model_name))
+        print("... saving model: {}".format(saved_model))
+
+    joblib.dump(grid, saved_model)
+
+    m, s = divmod(time.time() - time_start, 60)
+    h, m = divmod(m, 60)
+    runtime = "%03d:%02d:%02d" % (h, m, s)
+
+    # update log
+    update_train_log(tag, (str(dates[0]), str(dates[-1])), {'rmse': eval_rmse}, runtime,
+                     MODEL_VERSION, MODEL_VERSION_NOTE, test=True)
+
+
+def model_train(data_dir, test=False, _model_train=_model_train_rf):
     """
     funtion to train model given a df
     
@@ -108,11 +227,12 @@ def model_train(data_dir,test=False):
     ## train a different model for each data sets
     for country, df in ts_data.items():
         
-        if test and country not in ['all','united_kingdom']:
+        if test and country not in countries:
             continue
         
-        _model_train(df,country,test=test)
-    
+        _model_train(df, country,test=test)
+
+
 def model_load(prefix='sl',data_dir=None,training=True):
     """
     example funtion to load model
@@ -130,7 +250,7 @@ def model_load(prefix='sl',data_dir=None,training=True):
 
     all_models = {}
     for model in models:
-        all_models[re.split("-",model)[1]] = joblib.load(os.path.join(".","models",model))
+        all_models[re.split("-", model)[1]] = joblib.load(os.path.join(".","models",model))
 
     ## load data
     ts_data = fetch_ts(data_dir)
@@ -141,6 +261,7 @@ def model_load(prefix='sl',data_dir=None,training=True):
         all_data[country] = {"X":X,"y":y,"dates": dates}
         
     return(all_data, all_models)
+
 
 def model_predict(country,year,month,day,all_models=None,test=False):
     """
@@ -185,7 +306,7 @@ def model_predict(country,year,month,day,all_models=None,test=False):
     y_pred = model.predict(query)
     y_proba = None
     if 'predict_proba' in dir(model) and 'probability' in dir(model):
-        if model.probability == True:
+        if model.probability:
             y_proba = model.predict_proba(query)
 
 
@@ -210,7 +331,7 @@ if __name__ == "__main__":
     ## train the model
     print("TRAINING MODELS")
     data_dir = TRAIN_PATH
-    model_train(data_dir, test=True)
+    model_train(data_dir, test=False)
 
     ## load the model
     print("LOADING MODELS")

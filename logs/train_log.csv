@@ -1,3 +1,44 @@
 tag;dates;rmse;runtime;version;version_note;source
-united_kingdom;('2017-11-29', '2019-05-31');42848;000:00:06;0.1;supervised learing model for time-series;test
-all;('2017-11-30', '2019-05-20');36542;000:00:04;0.1;supervised learing model for time-series;test
+portugal;('2017-11-29', '2019-05-31');1076;000:00:05;0.1;supervised learing model for time-series - Random Forest Regressor;test
+united_kingdom;('2017-11-30', '2019-05-30');44102;000:00:04;0.1;supervised learing model for time-series - Random Forest Regressor;test
+hong_kong;('2018-04-19', '2019-04-26');933;000:00:02;0.1;supervised learing model for time-series - Random Forest Regressor;test
+eire;('2017-12-04', '2019-05-27');2932;000:00:04;0.1;supervised learing model for time-series - Random Forest Regressor;test
+spain;('2017-12-07', '2019-05-30');466;000:00:04;0.1;supervised learing model for time-series - Random Forest Regressor;test
+france;('2017-11-30', '2019-05-31');941;000:00:04;0.1;supervised learing model for time-series - Random Forest Regressor;test
+singapore;('2018-04-26', '2019-05-12');871;000:00:02;0.1;supervised learing model for time-series - Random Forest Regressor;test
+all;('2017-12-01', '2019-05-31');28681;000:00:04;0.1;supervised learing model for time-series - Random Forest Regressor;test
+norway;('2017-12-08', '2019-05-04');407;000:00:03;0.1;supervised learing model for time-series - Random Forest Regressor;test
+germany;('2017-12-05', '2019-05-30');536;000:00:04;0.1;supervised learing model for time-series - Random Forest Regressor;test
+netherlands;('2017-11-30', '2019-05-27');168;000:00:04;0.1;supervised learing model for time-series - Random Forest Regressor;test
+portugal;('2017-12-02', '2019-05-29');2381;000:00:04;0.2;supervised learing model for time-series - Support Vector Regressor;test
+united_kingdom;('2017-11-29', '2019-05-27');88430;000:00:02;0.2;supervised learing model for time-series - Support Vector Regressor;test
+hong_kong;('2018-04-26', '2019-05-01');2167;000:00:02;0.2;supervised learing model for time-series - Support Vector Regressor;test
+eire;('2017-12-03', '2019-05-29');5225;000:00:03;0.2;supervised learing model for time-series - Support Vector Regressor;test
+spain;('2017-12-02', '2019-05-28');775;000:00:02;0.2;supervised learing model for time-series - Support Vector Regressor;test
+france;('2017-12-01', '2019-05-31');1040;000:00:03;0.2;supervised learing model for time-series - Support Vector Regressor;test
+singapore;('2018-04-27', '2019-05-07');4891;000:00:02;0.2;supervised learing model for time-series - Support Vector Regressor;test
+all;('2017-12-02', '2019-05-31');72790;000:00:03;0.2;supervised learing model for time-series - Support Vector Regressor;test
+norway;('2017-12-06', '2019-05-10');441;000:00:02;0.2;supervised learing model for time-series - Support Vector Regressor;test
+germany;('2017-12-07', '2019-05-30');944;000:00:02;0.2;supervised learing model for time-series - Support Vector Regressor;test
+netherlands;('2017-12-07', '2019-05-26');391;000:00:02;0.2;supervised learing model for time-series - Support Vector Regressor;test
+portugal;('2017-12-07', '2019-05-31');668;000:00:05;0.3;supervised learing model for time-series - Gradient Boosting Regressor;test
+united_kingdom;('2017-11-29', '2019-05-31');47112;000:00:03;0.3;supervised learing model for time-series - Gradient Boosting Regressor;test
+hong_kong;('2018-04-19', '2019-05-01');521;000:00:02;0.3;supervised learing model for time-series - Gradient Boosting Regressor;test
+eire;('2017-11-30', '2019-05-25');2127;000:00:03;0.3;supervised learing model for time-series - Gradient Boosting Regressor;test
+spain;('2017-12-03', '2019-05-30');535;000:00:03;0.3;supervised learing model for time-series - Gradient Boosting Regressor;test
+france;('2017-11-29', '2019-05-30');1025;000:00:02;0.3;supervised learing model for time-series - Gradient Boosting Regressor;test
+singapore;('2018-05-06', '2019-05-11');1639;000:00:02;0.3;supervised learing model for time-series - Gradient Boosting Regressor;test
+all;('2017-12-02', '2019-05-29');43022;000:00:03;0.3;supervised learing model for time-series - Gradient Boosting Regressor;test
+norway;('2017-12-05', '2019-05-08');344;000:00:02;0.3;supervised learing model for time-series - Gradient Boosting Regressor;test
+germany;('2017-12-02', '2019-05-31');830;000:00:02;0.3;supervised learing model for time-series - Gradient Boosting Regressor;test
+netherlands;('2017-12-03', '2019-05-25');225;000:00:03;0.3;supervised learing model for time-series - Gradient Boosting Regressor;testportugal;('2017-11-29', '2019-05-31');391;000:00:08;0.1;supervised learing model for time-series - Random Forest Regressor;test
+united_kingdom;('2017-11-29', '2019-05-31');19912;000:00:06;0.1;supervised learing model for time-series - Random Forest Regressor;test
+hong_kong;('2018-04-19', '2019-05-01');793;000:00:03;0.1;supervised learing model for time-series - Random Forest Regressor;test
+eire;('2017-11-29', '2019-05-31');1522;000:00:06;0.1;supervised learing model for time-series - Random Forest Regressor;test
+spain;('2017-12-01', '2019-05-31');319;000:00:06;0.1;supervised learing model for time-series - Random Forest Regressor;test
+france;('2017-11-29', '2019-05-31');602;000:00:06;0.1;supervised learing model for time-series - Random Forest Regressor;test
+singapore;('2018-04-25', '2019-05-12');3228;000:00:03;0.1;supervised learing model for time-series - Random Forest Regressor;test
+all;('2017-11-29', '2019-05-31');16360;000:00:06;0.1;supervised learing model for time-series - Random Forest Regressor;test
+norway;('2017-12-05', '2019-05-11');70;000:00:04;0.1;supervised learing model for time-series - Random Forest Regressor;test
+germany;('2017-11-29', '2019-05-31');503;000:00:07;0.1;supervised learing model for time-series - Random Forest Regressor;test
+netherlands;('2017-11-30', '2019-05-31');134;000:00:06;0.1;supervised learing model for time-series - Random Forest Regressor;test
