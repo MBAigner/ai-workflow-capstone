@@ -43,29 +43,54 @@ The data exploration and the determination of relationships has been done in the
 
 #### (5) Articulate your findings using a deliverable with visualizations.
 
-The visualizations have been again built in the script  ``scripts/part_1.ipynb``.
+The visualizations have been again built in the notebook ``scripts/part_1.ipynb``.
 The findings are summarized in the part 1 report in the documentation folder 
 ``documentation/part1_report.pdf``.
 
 ## Part 2
 
-TBD
+#### (1) State the different modeling approaches that you will compare to address the business opportunity.
 
+In order to address the business opportunity, the following models will be compared:
 
-1. State the different modeling approaches that you will compare to address the business opportunity.
-2. Iterate on your suite of possible models by modifying data transformations, pipeline architectures, hyperparameters and other relevant factors.
-3. Re-train your model on all of the data using the selected approach and prepare it for deployment.
-4. Articulate your findings in a summary report.
+* A supervised ensemble approach, namely the **Random Forest Regressor**
+* A simple **Least Squares Regressor**
+* A time-series model (TBD)
 
+#### (2) Iterate on your suite of possible models by modifying data transformations, pipeline architectures, hyperparameters and other relevant factors.
+
+The suitablilty of data transformations, pipeline architectures, hyperparameters and other relevant factors has been established. 
+This is done in the python script ``model.py``.
+
+#### (3) Re-train your model on all of the data using the selected approach and prepare it for deployment.
+
+This is again provided in the final version of the script ``model.py``.
+
+#### (4) Articulate your findings in a summary report.
+
+The summary report is provided in ``documentation/part_2_report.pdf``.
 
 ## Part 3
 
 TBD
 
-1. Build a draft version of an API with train, predict, and logfile endpoints.
-2. Using Docker, bundle your API, model, and unit tests.
-3. Using test-driven development iterate on your API in a way that anticipates scale, load, and drift.
-4. Create a post-production analysis script that investigates the relationship between model performance and the business metric.
-5. Articulate your summarized findings in a final report.
+#### (1) Build a draft version of an API with train, predict, and logfile endpoints.
 
+TBD
+
+#### (2) Using Docker, bundle your API, model, and unit tests.
+
+TBD
+
+#### (3) Using test-driven development iterate on your API in a way that anticipates scale, load, and drift.
+
+TBD
+
+#### (4) Create a post-production analysis script that investigates the relationship between model performance and the business metric.
+
+TBD
+
+#### (5) Articulate your summarized findings in a final report.
+
+The summary report is provided in ``documentation/part_3_report.pdf``.
 
