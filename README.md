@@ -62,9 +62,12 @@ In order to address the business opportunity, the following models will be compa
 The suitablilty of data transformations, pipeline architectures, hyperparameters and other relevant factors has been established. 
 This is done in the python script ``model.py``.
 
+For all of the models, different parameter settings and transformations have been compared.
+
 #### (3) Re-train your model on all of the data using the selected approach and prepare it for deployment.
 
 This is again provided in the final version of the script ``model.py``.
+The decision is argued in the summary report.
 
 #### (4) Articulate your findings in a summary report.
 
@@ -72,19 +75,24 @@ The summary report is provided in ``documentation/part_2_report.pdf``.
 
 ## Part 3
 
-TBD
 
 #### (1) Build a draft version of an API with train, predict, and logfile endpoints.
 
-TBD
+The API draft and endpoints are written in the file ``app.py``
 
 #### (2) Using Docker, bundle your API, model, and unit tests.
 
-TBD
+The Docker file is stored in the root directory of this repository and bundles the API, model and unit tests.
+
 
 #### (3) Using test-driven development iterate on your API in a way that anticipates scale, load, and drift.
 
-TBD
+All tests can be started using ``run-test.py`` and have been stored in the directory ``app.py``.
+The consist of
+
+* Tests for training and predicting using the model for different countries and dates.
+* Tests for the logging utility.
+* Testing for the API endpoints
 
 #### (4) Create a post-production analysis script that investigates the relationship between model performance and the business metric.
 
