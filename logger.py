@@ -2,7 +2,7 @@
 import os
 from os import path
 
-LOG_PATH = os.path.join(".", "logs")
+LOG_PATH = os.path.join("..", "logs")
 TRAIN_LOG = "train_log.csv"
 PREDICT_LOG = "predict_log.csv"
 

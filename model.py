@@ -15,12 +15,13 @@ from logger import update_predict_log, update_train_log
 from cslib import fetch_ts, engineer_features
 
 
-## model specific variables (iterate the version and note with each change)
-MODEL_DIR = "models"
+# model specific variables (iterate the version and note with each change)
+MODEL_DIR = "../models"
+DATA_DIR = "../data"
+TRAIN_PATH = os.path.join(DATA_DIR, "cs-train")
 MODEL_VERSION = 0.4
 MODEL_VERSION_NOTE = "supervised learing model for time-series - Random Forest Regressor"
 
-TRAIN_PATH = os.path.join("data", "cs-train")
 countries = ['portugal',
              'united_kingdom',
              'hong_kong',
@@ -231,9 +232,9 @@ def model_train(data_dir, test=False, _model_train=_model_train_rf):
         _model_train(df, country, test=test)
 
 
-def model_load(prefix='sl',data_dir=None,training=True):
+def model_load(prefix='sl', data_dir=None, training=True):
     """
-    example funtion to load model
+    example function to load model
     
     The prefix allows the loading of different models
     """
@@ -241,14 +242,14 @@ def model_load(prefix='sl',data_dir=None,training=True):
     if not data_dir:
         data_dir = TRAIN_PATH
     
-    models = [f for f in os.listdir(os.path.join(".", "models"))]  # if re.search("sl", f)]
+    models = [f for f in os.listdir(MODEL_DIR) if re.search(prefix, f)]
 
     if len(models) == 0:
         raise Exception("Models with prefix '{}' cannot be found did you train?".format(prefix))
 
     all_models = {}
     for model in models:
-        all_models[re.split("-", model)[1]] = joblib.load(os.path.join(".","models",model))
+        all_models[re.split("-", model)[1]] = joblib.load(os.path.join(MODEL_DIR, model))
 
     ## load data
     ts_data = fetch_ts(data_dir)
@@ -271,7 +272,7 @@ def model_predict(country,year,month,day,all_models=None,test=False):
 
     ## load model if needed
     if not all_models:
-        all_data, all_models = model_load(training=False)
+        all_data, all_models = model_load(training=False, prefix="test" if test else "sl")
     
     ## input checks
     if country not in all_models.keys():

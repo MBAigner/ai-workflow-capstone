@@ -6,7 +6,20 @@ app = Flask(__name__)
 
 @app.route("/predict", methods=["POST"])
 def predict():
-    pass
+    if not request.json or "country" not in request.json or "date" not in request.json:
+        return {"status": "error",
+                "error_message": "country and date is required"}
+    try:
+        country = request.json["country"]
+        date = request.json["date"]
+        date_parts = date.split(".")
+        year, month, day = date_parts[2], date_parts[1], date_parts[0]
+        test = request.json["test"] if ("test" in request.json) else False
+        res = model.model_predict(country=country, year=year, month=month, day=day, test=test)
+        return {"prediction": res,
+                "status": "ok"}
+    except Exception as e:
+        raise e
 
 
 @app.route('/train', methods=['POST'])
