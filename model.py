@@ -17,7 +17,7 @@ from cslib import fetch_ts, engineer_features
 
 ## model specific variables (iterate the version and note with each change)
 MODEL_DIR = "models"
-MODEL_VERSION = 0.1
+MODEL_VERSION = 0.4
 MODEL_VERSION_NOTE = "supervised learing model for time-series - Random Forest Regressor"
 
 TRAIN_PATH = os.path.join("data", "cs-train")
@@ -226,11 +226,9 @@ def model_train(data_dir, test=False, _model_train=_model_train_rf):
 
     ## train a different model for each data sets
     for country, df in ts_data.items():
-        
-        if test and country not in countries:
+        if country not in countries:
             continue
-        
-        _model_train(df, country,test=test)
+        _model_train(df, country, test=test)
 
 
 def model_load(prefix='sl',data_dir=None,training=True):
