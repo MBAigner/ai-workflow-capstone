@@ -78,11 +78,11 @@ The summary report is provided in ``documentation/part_2_report.pdf``.
 
 #### (1) Build a draft version of an API with train, predict, and logfile endpoints.
 
-The API draft and endpoints are written in the file ``app.py``
+The API draft and endpoints are written in the file ``app.py``.
 
 #### (2) Using Docker, bundle your API, model, and unit tests.
 
-The Docker file is stored in the root directory of this repository and bundles the API, model and unit tests.
+The Docker file is stored as ``Dockerfile`` in the root directory of this repository and bundles the API, model and unit tests.
 
 
 #### (3) Using test-driven development iterate on your API in a way that anticipates scale, load, and drift.
@@ -96,9 +96,14 @@ The consist of
 
 #### (4) Create a post-production analysis script that investigates the relationship between model performance and the business metric.
 
-TBD
+A post-production analysis is provided in the script ``monitoring.py``.
+There, the actual values are compared to the predictions.
+Additionally, the predictions are compared to a baseline, i.e. always predicting the mean as revenue for the next days.
+
+Furthermore, the current RMSE of the model and of the baseline are shown.
 
 #### (5) Articulate your summarized findings in a final report.
 
 The summary report is provided in ``documentation/part_3_report.pdf``.
+Additionally, the REST interfaces are explained there.
 
