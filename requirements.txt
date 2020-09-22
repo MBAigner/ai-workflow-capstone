@@ -6,3 +6,5 @@ pandas
 flask
 collections
 joblib
+matplotlib
+json
