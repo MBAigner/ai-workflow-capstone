@@ -16,10 +16,12 @@ def predict():
         year, month, day = date_parts[2], date_parts[1], date_parts[0]
         test = request.json["test"] if ("test" in request.json) else False
         res = model.model_predict(country=country, year=year, month=month, day=day, test=test)
-        return {"prediction": res,
+        return {"prediction": res["y_pred"][0] if res["y_pred"] is not None else None,
+                "probability": res["y_proba"][0] if res["y_proba"] is not None else None,
                 "status": "ok"}
     except Exception as e:
-        raise e
+        return {"error_message": str(e),
+                "status": "error"}
 
 
 @app.route('/train', methods=['POST'])

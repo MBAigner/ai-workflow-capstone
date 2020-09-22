@@ -16,8 +16,8 @@ from cslib import fetch_ts, engineer_features
 
 
 # model specific variables (iterate the version and note with each change)
-MODEL_DIR = "../models"
-DATA_DIR = "../data"
+MODEL_DIR = "./models"
+DATA_DIR = "./data"
 TRAIN_PATH = os.path.join(DATA_DIR, "cs-train")
 MODEL_VERSION = 0.4
 MODEL_VERSION_NOTE = "supervised learing model for time-series - Random Forest Regressor"
@@ -259,7 +259,7 @@ def model_load(prefix='sl', data_dir=None, training=True):
         dates = np.array([str(d) for d in dates])
         all_data[country] = {"X":X,"y":y,"dates": dates}
         
-    return(all_data, all_models)
+    return (all_data, all_models)
 
 
 def model_predict(country,year,month,day,all_models=None,test=False):

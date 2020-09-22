@@ -3,6 +3,8 @@ from unittests import *
 from unittests.ModelTest import ModelTest
 from unittests.ApiTest import ApiTest
 from unittests.LogTest import LogTest
+import model
+import logger
 
 suite = unittest.TestSuite()
 

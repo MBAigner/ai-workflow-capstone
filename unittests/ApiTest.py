@@ -1,6 +1,16 @@
 import unittest
+import model
 from model import *
+import logger
 import requests
+
+
+DEBUG = False
+if DEBUG:
+    model.DATA_DIR = "../data"
+    model.TRAIN_PATH = model.DATA_DIR + "/cs-train"
+    model.MODEL_DIR = "../models"
+    logger.LOG_PATH = "../logs"
 
 
 class ApiTest(unittest.TestCase):
@@ -30,14 +40,14 @@ class ApiTest(unittest.TestCase):
                    "country": "eire"}
         r = requests.post("http://0.0.0.0:8080/train",
                           json=request)
-        self.assertTrue(os.path.exists("../models/sl-eire-0_4.joblib"))
+        self.assertTrue(os.path.exists(model.MODEL_DIR + "/sl-eire-0_4.joblib"))
 
     def test_05_train(self):
         request = {"test": True,
                    "country": "eire"}
         r = requests.post("http://0.0.0.0:8080/train",
                           json=request)
-        self.assertTrue(os.path.exists("../models/test-eire-0_4.joblib"))
+        self.assertTrue(os.path.exists(model.MODEL_DIR + "/test-eire-0_4.joblib"))
 
     def test_06_train(self):
         request = {"test": True,
@@ -51,7 +61,21 @@ class ApiTest(unittest.TestCase):
                    "country": "all"}
         r = requests.post("http://0.0.0.0:8080/train",
                           json=request)
-        self.assertTrue(os.path.exists("../models/sl-france-0_4.joblib"))
+        self.assertTrue(os.path.exists(model.MODEL_DIR + "/sl-france-0_4.joblib"))
+
+    def test_08_predict(self):
+        request = {"date": "12.12.2017",
+                   "country": "united_kingdom"}
+        r = requests.post("http://0.0.0.0:8080/predict",
+                          json=request)
+        self.assertTrue("prediction" in r.text)
+
+    def test_09_predict(self):
+        request = {"date": "12.12.2017",
+                   "country": "nonsense"}
+        r = requests.post("http://0.0.0.0:8080/predict",
+                          json=request)
+        self.assertTrue("error_message" in r.text)
 
 
 if __name__ == "__main__":
