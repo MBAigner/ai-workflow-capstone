@@ -6,7 +6,7 @@ import logger
 
 class LogTest(unittest.TestCase):
 
-    DEBUG = False
+    DEBUG = True  # for incomplete test runs
     if DEBUG:
         model.DATA_DIR = "../data"
         model.TRAIN_PATH = model.DATA_DIR + "/cs-train"

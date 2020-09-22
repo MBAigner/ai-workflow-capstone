@@ -3,7 +3,7 @@ import model
 import os
 import logger
 
-DEBUG = False
+DEBUG = False  # for incomplete test runs
 if DEBUG:
     model.DATA_DIR = "../data"
     model.TRAIN_PATH = model.DATA_DIR + "/cs-train"

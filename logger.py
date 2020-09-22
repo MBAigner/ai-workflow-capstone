@@ -27,7 +27,7 @@ def update_predict_log(country,y_pred,y_proba,target_date, runtime, version, tes
         f.write("country;y_pred;y_proba;target_date;runtime;version;source\n")
         f.close()
     f = open(file, "a")
-    row = ";".join([str(country), str(y_pred[0] if y_proba is not None else ""),
+    row = ";".join([str(country), str(y_pred[0] if y_pred is not None else ""),
                     str(y_proba[0] if y_proba is not None else ""),
                     str(target_date), str(runtime),
                     str(version), "test" if test else "prod"])
