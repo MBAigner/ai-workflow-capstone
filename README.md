@@ -87,7 +87,7 @@ The Docker file is stored in the root directory of this repository and bundles t
 
 #### (3) Using test-driven development iterate on your API in a way that anticipates scale, load, and drift.
 
-All tests can be started using ``run-test.py`` and have been stored in the directory ``app.py``.
+All tests can be started using ``run-test.py`` and have been stored in the directory ``unittests``.
 The consist of
 
 * Tests for training and predicting using the model for different countries and dates.
