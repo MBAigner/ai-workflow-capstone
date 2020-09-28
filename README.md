@@ -30,6 +30,7 @@ The following POST options are present. All of them get a dictionary as input vi
 ## Testing
 
 All tests can be run with ``python3 run-tests.py``.
+
 Single tests for either API, logging or model can be found in the directory ``unittests``.
 There, ``DEBUG`` can be set to True for single tests (either API, Log or Model).
 
