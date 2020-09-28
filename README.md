@@ -10,6 +10,22 @@ documented [here](https://github.com/MBAigner/ai-workflow-capstone/blob/master/d
 ## API
 
 After starting ``app.py`` locally or over the provided Dockerfile, predictions, trainings and logs work over REST calls, described in the following.
+The REST calls can be done over the address 0.0.0.0:8080.
+
+The following POST options are present. All of them get a dictionary as input via post. Additionally, the response is always a dictionary (despite of log files).
+* ``0.0.0.0:8080/predict``
+  * Parameters:
+    * ``country``: all or name of the country
+    * ``test``: true or false
+  * Return: ``prediction``, ``probability``, ``status`` (if error, additionally ``error_message``)
+* ``0.0.0.0:8080/train``
+  * Parameters: 
+    * ``country:`` all or name of the country
+    * ``test``: true or false
+  * Return: ``status`` (if error, additionally ``error_message``)
+* ``0.0.0.0:8080/get_log``
+  * Parameters: ``type``: "predict" or "train"
+  * return: log file (in CSV Format) or in case of errors a dictonary with ``status`` and ``error_message``
 
 ## Testing
 
