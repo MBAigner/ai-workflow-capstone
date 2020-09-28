@@ -27,6 +27,17 @@ The following POST options are present. All of them get a dictionary as input vi
   * Parameters: ``type``: "predict" or "train"
   * return: log file (in CSV Format) or in case of errors a dictonary with ``status`` and ``error_message``
 
+## Docker
+
+Execute the following commands to build and run the docker container:
+
+```
+docker build -t ai-workflow-capstone .
+docker run ai-workflow-capstone
+```
+
+The container now runs at port 8080 on localhost.
+
 ## Testing
 
 All tests can be run with ``python3 run-tests.py``.
