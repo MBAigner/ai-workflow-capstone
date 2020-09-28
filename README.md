@@ -11,9 +11,9 @@ documented [here](https://github.com/MBAigner/ai-workflow-capstone/blob/master/d
 #### (1) Assimilate the business scenario and articulate testable hypotheses.
 
 * H<sub>0</sub>: There will be no difference between the revenue of the new model an the old one.
-* H<sub>1</sub>: The revenue will increase using the new model.
+* H<sub>1</sub>: The revenue prediction will increase using the new model.
 
-Another alternative hypothesis is that the revenue goes down when using the new model.
+Another alternative hypothesis is that the revenue prediction performance goes down when using the new model.
 Alternatively, the same can be assumed country-wise:
 
 * A further hypothesis H<sub>0</sub> is that there are no differences in the distribution of monthly revenues of the then top countries,
