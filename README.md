@@ -31,6 +31,7 @@ The following POST options are present. All of them get a dictionary as input vi
 
 All tests can be run with ``python3 run-tests.py``.
 Single tests for either API, logging or model can be found in the directory ``unittests``.
+There, ``DEBUG`` can be set to True for single tests (either API, Log or Model).
 
 Logging for tests is done with test models and an according flag for tests in the log files.
 Thus, production and test logs can be distinguished.
