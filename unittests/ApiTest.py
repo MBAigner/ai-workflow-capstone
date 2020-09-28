@@ -36,7 +36,7 @@ class ApiTest(unittest.TestCase):
         self.assertTrue("error_message" in r.text)
 
     def test_04_train(self):
-        request = {"test": False,
+        request = {"test": True,
                    "country": "eire"}
         r = requests.post("http://0.0.0.0:8080/train",
                           json=request)
@@ -57,7 +57,7 @@ class ApiTest(unittest.TestCase):
         self.assertTrue("error_message" in r.text)
 
     def test_07_train(self):
-        request = {"test": False,
+        request = {"test": True,
                    "country": "all"}
         r = requests.post("http://0.0.0.0:8080/train",
                           json=request)
@@ -65,14 +65,16 @@ class ApiTest(unittest.TestCase):
 
     def test_08_predict(self):
         request = {"date": "12.12.2017",
-                   "country": "united_kingdom"}
+                   "country": "united_kingdom",
+                   "test": True}
         r = requests.post("http://0.0.0.0:8080/predict",
                           json=request)
         self.assertTrue("prediction" in r.text)
 
     def test_09_predict(self):
         request = {"date": "12.12.2017",
-                   "country": "nonsense"}
+                   "country": "nonsense",
+                   "test": True}
         r = requests.post("http://0.0.0.0:8080/predict",
                           json=request)
         self.assertTrue("error_message" in r.text)

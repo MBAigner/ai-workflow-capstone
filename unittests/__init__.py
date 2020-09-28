@@ -8,12 +8,12 @@ import logger
 
 suite = unittest.TestSuite()
 
-model = unittest.TestLoader().loadTestsFromTestCase(ModelTest)
-log = unittest.TestLoader().loadTestsFromTestCase(LogTest)
-api = unittest.TestLoader().loadTestsFromTestCase(ApiTest)
+modeltest = unittest.TestLoader().loadTestsFromTestCase(ModelTest)
+logtest = unittest.TestLoader().loadTestsFromTestCase(LogTest)
+apitest = unittest.TestLoader().loadTestsFromTestCase(ApiTest)
 
-suite.addTests(model)
-suite.addTests(log)
-suite.addTests(api)
+suite.addTests(modeltest)
+suite.addTests(logtest)
+suite.addTests(apitest)
 
 

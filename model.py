@@ -330,12 +330,12 @@ if __name__ == "__main__":
     ## train the model
     print("TRAINING MODELS")
     data_dir = TRAIN_PATH
-    model_train(data_dir, test=False)
+    model_train(data_dir, test=True)
 
     ## load the model
     print("LOADING MODELS")
     all_data, all_models = model_load()
-    print("... models loaded: ",",".join(all_models.keys()))
+    print("... models loaded: ", ",".join(all_models.keys()))
 
     ## test predict
     country='all'

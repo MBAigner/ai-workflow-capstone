@@ -30,11 +30,11 @@ class ModelTest(unittest.TestCase):
         self.assertTrue("fit" in dir(model_uk))
 
     def test_04_predict(self):
-        result = model.model_predict("united_kingdom", "2017", "12", "03")
+        result = model.model_predict("united_kingdom", "2017", "12", "03", test=True)
         self.assertTrue("y_pred" in result)
 
     def test_05_predict(self):
-        result = model.model_predict("all", "2017", "12", "03")
+        result = model.model_predict("all", "2017", "12", "03", test=True)
         print(result)
         self.assertTrue("y_pred" in result)
 
