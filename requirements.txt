@@ -1,10 +1,7 @@
 requests
-unittest
 scikit-learn
 numpy
 pandas
 flask
-collections
 joblib
 matplotlib
-json

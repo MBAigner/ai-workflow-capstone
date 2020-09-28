@@ -32,7 +32,7 @@ def train():
     test = request.json["test"] if ("test" in request.json) else False
     country = request.json["country"]
     if country not in ['portugal', 'united_kingdom','hong_kong', 'eire',  'spain', 'france', 'singapore',
-                        'all', 'norway', 'germany', 'netherlands']:
+                       'all', 'norway', 'germany', 'netherlands']:
         return {"status": "error",
                 "error_message": "country is not supported"}
     if country == "all":

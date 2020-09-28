@@ -163,3 +163,16 @@ germany;('2017-11-29', '2019-05-28');571;000:00:03;0.4;supervised learing model 
 netherlands;('2017-12-01', '2019-05-30');151;000:00:03;0.4;supervised learing model for time-series - Random Forest Regressor;test
 germany;('2017-11-30', '2019-05-30');622;000:00:03;0.4;supervised learing model for time-series - Random Forest Regressor;test
 france;('2017-11-29', '2019-05-31');777;000:00:03;0.4;supervised learing model for time-series - Random Forest Regressor;test
+portugal;('2017-11-30', '2019-05-30');874;000:00:05;0.4;supervised learing model for time-series - Random Forest Regressor;test
+united_kingdom;('2017-11-29', '2019-05-23');30339;000:00:03;0.4;supervised learing model for time-series - Random Forest Regressor;test
+hong_kong;('2018-04-19', '2019-04-30');1134;000:00:02;0.4;supervised learing model for time-series - Random Forest Regressor;test
+eire;('2017-12-01', '2019-05-30');3228;000:00:03;0.4;supervised learing model for time-series - Random Forest Regressor;test
+spain;('2017-12-03', '2019-05-31');335;000:00:03;0.4;supervised learing model for time-series - Random Forest Regressor;test
+france;('2017-12-01', '2019-05-30');1199;000:00:03;0.4;supervised learing model for time-series - Random Forest Regressor;test
+singapore;('2018-04-25', '2019-05-10');181;000:00:02;0.4;supervised learing model for time-series - Random Forest Regressor;test
+all;('2017-11-29', '2019-05-31');40503;000:00:03;0.4;supervised learing model for time-series - Random Forest Regressor;test
+norway;('2017-12-12', '2019-05-08');309;000:00:03;0.4;supervised learing model for time-series - Random Forest Regressor;test
+germany;('2017-11-29', '2019-05-30');659;000:00:03;0.4;supervised learing model for time-series - Random Forest Regressor;test
+netherlands;('2017-12-02', '2019-05-30');158;000:00:03;0.4;supervised learing model for time-series - Random Forest Regressor;test
+germany;('2017-12-06', '2019-05-30');734;000:00:03;0.4;supervised learing model for time-series - Random Forest Regressor;test
+france;('2017-11-30', '2019-05-28');859;000:00:03;0.4;supervised learing model for time-series - Random Forest Regressor;test
