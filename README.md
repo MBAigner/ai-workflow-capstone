@@ -5,6 +5,30 @@ This repository contains my solution for the IBM AI Enterprise Workflow Captston
 The task is provided in https://github.com/aavail/ai-workflow-capstone and is additionally
 documented [here](https://github.com/MBAigner/ai-workflow-capstone/blob/master/documentation/description.md).
 
+# Project Structure and API
+
+## API
+
+After starting ``app.py`` locally or over the provided Dockerfile, predictions, trainings and logs work over REST calls, described in the following.
+
+## Testing
+
+All tests can be run with ``python3 run-tests.py``.
+Single tests for either API, logging or model can be found in the directory ``unittests``.
+
+Logging for tests is done with test models and an according flag for tests in the log files.
+Thus, production and test logs can be distinguished.
+
+## Monitoring
+
+A monitoring script for obtaining prediction errors and comparing actual versus predicted values (also to the baseline) is available in ``monitoring.py``.
+
+## Reports
+
+The reports for all three parts can be found in the directory ``documentation``.
+
+
+# Solution
 
 ## Part 1
 
