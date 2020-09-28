@@ -33,7 +33,7 @@ Execute the following commands to build and run the docker container:
 
 ```
 docker build -t ai-workflow-capstone .
-docker run ai-workflow-capstone
+docker run -p 8080:8080 ai-workflow-capstone
 ```
 
 The container now runs at port 8080 on localhost.
